@@ -1,6 +1,11 @@
 from ast import For
 import random
 import os
+from tkinter import *
+
+
+window = Tk()
+window.title("Добро пожаловать в WordMIx")
 while(True):
     file = open('Words.txt',encoding='utf-8',mode="r")
     for i in range(random.randint(0,19)):
