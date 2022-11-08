@@ -1,4 +1,5 @@
 from ast import For
+from difflib import Match
 import random
 import os
 from tkinter import *
@@ -6,8 +7,15 @@ from tkinter import *
 
 window = Tk()
 window.title("Добро пожаловать в WordMIx")
+window.configure(bg='black')
 while(True):
-    file = open('Words.txt',encoding='utf-8',mode="r")
+    answ=input('введите сложность 1.легко 2.сложно ')
+    match answ:
+        case "1":
+            file = open('Words.txt',encoding='utf-8',mode="r")
+        case "2":
+            file = open('words1.txt',encoding='utf-8',mode="r")
+            
     for i in range(random.randint(0,19)):
         file.readline()
     txt=file.readline()
