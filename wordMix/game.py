@@ -2,13 +2,26 @@ from ast import For
 from difflib import Match
 import random
 import os
-from tkinter import *
+from tkinter import *      
 
+ws = Tk()
+ws.title('PythonGuides')
+ws.geometry('500x500')
 
-window = Tk()
-window.title("Добро пожаловать в WordMIx")
-window.configure(bg='black')
-while(True):
+#ws.configure(bg='black')
+canvas = Canvas(ws,width = 512, height = 512)
+
+canvas.pack()      
+img = PhotoImage(file='logo.png') 
+canvas.place(x=0,y=0)     
+canvas.create_image(
+    0,
+    0,
+    anchor=NW, 
+    image=img
+    )      
+ws.mainloop()  
+"""while(True):
     answ=input('введите сложность 1.легко 2.сложно ')
     match answ:
         case "1":
@@ -42,4 +55,4 @@ while(True):
         else:
             print('вы не угадали')                 
             break
-            file.close()
+            file.close()"""
