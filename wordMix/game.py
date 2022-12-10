@@ -5,9 +5,39 @@ import os
 from tkinter import *      
 from PIL import Image
 
-def CT ():
-    lB['text']="легко"
 
+
+
+
+def CT ():
+    file = open('Words.txt',encoding='utf-8',mode="r")
+    ran=random.randint(1,18)            
+    for i in range(ran):
+        file.readline()
+    txt=file.readline()
+    txt = txt.replace('\n','')
+    Word=txt.split()
+    for i, word in enumerate(map(list,Word)):
+        random.shuffle(word)
+        Word[i]=''.join(word)
+    lB['text']=Word
+    lB1['text']=ran
+
+def CT1 ():
+    file = open('words1.txt',encoding='utf-8',mode="r")            
+    for i in range(random.randint(1,9)):
+        file.readline()
+    txt=file.readline()
+    txt = txt.replace('\n','')
+    Word=txt.split()
+    for i, word in enumerate(map(list,Word)):
+        random.shuffle(word)
+        Word[i]=''.join(word)
+    lB['text']=Word
+
+def getText():
+    texT=text_box.get()
+    lB1.configure(text=texT)
 
 ws = Tk()
 ws.title('PythonGuides')
@@ -31,24 +61,21 @@ button = Button(
     height=5,
     bg="yellow",
     fg="black",
+    command=getText
 )
  
 button.pack()
 button.place(x=1500,y=700)
 #------------------------------------------------
-text_box = Text(
-    width=50,
-    height=5,
-    bg="yellow",
-    fg="black",
-)
+text_box = Entry(ws,width=50)
 text_box.pack()
 text_box.place(x=810,y=700)
 #сложность
 rB1=Radiobutton(text='лёгкий',value=1,command=CT)
 rB1.pack()
 rB1.place(x=710,y=300)
-rB2=Radiobutton(ws,text='средний',value=2)
+rB2=Radiobutton(ws,text='средний',value=2,command=CT1)
+
 rB2.pack()
 rB2.place(x=710,y=340)
 rB3=Radiobutton(ws,text='сложный',value=3)
@@ -60,6 +87,9 @@ rB4.place(x=710,y=420)
 lB=Label(text='hEllO',height=5,width=100,font=("Arial",14))
 lB.pack()
 lB.place(x=510,y=150)
+lB1=Label(text='hEllO')
+lB1.pack()
+lB1.place(x=510,y=750)
 ws.mainloop()  
 """while(True):
     answ=input('введите сложность 1.легко 2.сложно ')
