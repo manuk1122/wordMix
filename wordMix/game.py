@@ -4,6 +4,11 @@ import random
 import os
 from tkinter import *      
 from PIL import Image
+
+def CT ():
+    lB['text']="легко"
+
+
 ws = Tk()
 ws.title('PythonGuides')
 ws.geometry('1920x1080')
@@ -11,9 +16,6 @@ ws.geometry('1920x1080')
 ws.configure(bg='black')
 canvas = Canvas(ws,width = 150, height = 150)
 canvas.pack()      
-img_new=Image.open('logo.png')
-img_new1=img_new.resize((150,150)) 
-img_new1.save('logo1.png')
 img = PhotoImage(file='logo1.png')
 canvas.place(x=0,y=0)     
 canvas.create_image(
@@ -41,7 +43,23 @@ text_box = Text(
     fg="black",
 )
 text_box.pack()
-text_box.place(x=810,y=700) 
+text_box.place(x=810,y=700)
+#сложность
+rB1=Radiobutton(text='лёгкий',value=1,command=CT)
+rB1.pack()
+rB1.place(x=710,y=300)
+rB2=Radiobutton(ws,text='средний',value=2)
+rB2.pack()
+rB2.place(x=710,y=340)
+rB3=Radiobutton(ws,text='сложный',value=3)
+rB3.pack()
+rB3.place(x=710,y=380)
+rB4=Radiobutton(ws,text='не пройдёш',value=4)
+rB4.pack()
+rB4.place(x=710,y=420)
+lB=Label(text='hEllO',height=5,width=100,font=("Arial",14))
+lB.pack()
+lB.place(x=510,y=150)
 ws.mainloop()  
 """while(True):
     answ=input('введите сложность 1.легко 2.сложно ')
